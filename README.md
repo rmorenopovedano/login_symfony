@@ -2,7 +2,7 @@ Symfony Standard Edition
 ========================
 Sistema de logueo y registro para symfony 2.8
 
-composer install:
+<h3>composer install:</h3>
 -nombre de la base de datos: symfony
 
 crear la base de datos en caso de que con el composer install no salte el wizard para crearla:
