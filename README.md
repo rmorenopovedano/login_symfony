@@ -11,3 +11,6 @@ Symfony Standard Edition
 <p>Actualizamos la base de datos con las tablas para el login</p>
 
 <h3>php app/console d:s:u -f</h3>
+
+Ya podemos lanzar la app:
+<h3>php app/console server:run</h3>
