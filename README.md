@@ -14,3 +14,6 @@ Symfony Standard Edition
 
 Ya podemos lanzar la app:
 <h3>php app/console server:run</h3>
+
+
+<h4>En la base de datos el email y el last_name están puestos como UNIQUE, editarlo para quitar el UNIQUE del last_name para poder insertar registros con el mismo apellido.
