@@ -1,13 +1,13 @@
 Symfony Standard Edition
 ========================
-Sistema de logueo y registro para symfony 2.8
+<h2>Sistema de logueo y registro para symfony 2.8</h2>
 
 <h3>composer install:</h3>
--nombre de la base de datos: symfony
+<p>nombre de la base de datos: symfony</p>
 
-crear la base de datos en caso de que con el composer install no salte el wizard para crearla:
-php app/console doctrine:database:create
+<span>crear la base de datos en caso de que con el composer install no salte el wizard para crearla:</span>
+<h3>php app/console doctrine:database:create</h3>
 
-Actualizamos la base de datos con las tablas para el login
+<p>Actualizamos la base de datos con las tablas para el login</p>
 
-php app/console d:s:u -f
+<h3>php app/console d:s:u -f</h3>
