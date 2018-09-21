@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {# Muestra el error en caso de existir#}
+    {% if error %}
+        <div class="alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <form action="{{ path('login') }}" method="post">
+
+        {# Input para el campo email #}
+        <label for="username">Email:</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+
+        {# Input para el campo contraseña #}
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="_password" />
+
+        {# Ruta a la que redirige si hay éxito #}
+        <input type="hidden" name="_target_path" value="/" />
+
+        <button type="submit" class="btn btn-danger">Entrar</button>
+    </form>
+
+    {# Enlace al registro #}
+    <p><a class="btn btn-info" href="{{ path('register') }}">Registro</a></p>
+{% endblock %}
