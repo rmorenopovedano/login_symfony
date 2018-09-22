@@ -38,41 +38,4 @@ class SecurityController extends Controller
     {
         // UNREACHABLE CODE
     }
-
-    /**
-     * @Route("/registro", name="register")
-     */
-    public function registerAction(Request $request)
-    {
-        // Creamos el formulario y le enviamos un usuario como molde
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-
-        // Hacemos que el formulario maneje la petición
-        $form->handleRequest($request);
-
-        // Comprobamos que se ha enviado el formulario
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            // Codificamos la contraseña en texto plano accediendo al 'encoder' que habíamos indicado en la configuración
-            $password = $this->get('security.password_encoder')
-                ->encodePassword($user, $user->getPlainPassword());
-
-            // Establecemos la contraseña real ya codificada al usuario
-            $user->setPassword($password);
-
-            // Persistimos la entidad como cualquier otra
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-
-            // Redigirimos a la pantalla de login para que acceda el nuevo usuario
-            return $this->redirectToRoute('login');
-        }
-
-        return $this->render(
-            'security/register.html.twig',
-            array('form' => $form->createView())
-        );
-    }
 }

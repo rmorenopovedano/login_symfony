@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
+use AppBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -27,7 +28,7 @@ class UserController extends Controller
         $users = $em->getRepository('AppBundle:User')->findAll();
 
         return $this->render('user/index.html.twig', array(
-            'users' => $users,
+            'users' => $users
         ));
     }
 
@@ -39,7 +40,6 @@ class UserController extends Controller
      */
     public function newAction(Request $request)
     {
-        // Creamos el formulario y le enviamos un usuario como molde
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
 
@@ -66,7 +66,7 @@ class UserController extends Controller
         }
 
         return $this->render(
-            'user/new.html.twig',
+            'security/register.html.twig',
             array('form' => $form->createView())
         );
     }
