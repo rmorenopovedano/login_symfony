@@ -13,8 +13,12 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        $em= $this->getDoctrine()->getManager();
+        $repo = $em->getRepository(User::class);
+        $userRaul=$repo->getUserRaul();
         return $this->render('default/index.html.twig',[
-            'name'=>$this->getUser()
+            'name'=>$this->getUser(),
+            'raul'=>$userRaul
         ]);
     }
 }

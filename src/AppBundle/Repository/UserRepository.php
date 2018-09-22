@@ -16,7 +16,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             ->select('u')
             ->from('AppBundle:User', 'u')
             ->where('u.username = :username')
-            ->setParameter('username', "pepe")
+            ->setParameter('username', 'pepe')
             ->getQuery();
         return $qb->getResult();
 

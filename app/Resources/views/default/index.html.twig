@@ -2,6 +2,9 @@
 
 {% block body %}
     <div id="wrapper">
+    {% for r in raul %}
+       Tu admin es mister: {{ r }}
+        {% endfor %}
         <div id="container">
             <div id="welcome">
                 <h1><span>Welcome to</span> Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}</h1>
