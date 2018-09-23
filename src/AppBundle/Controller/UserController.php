@@ -21,14 +21,18 @@ class UserController extends Controller
      * @Route("/", name="user_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $message = $request->query->get('message');
+        $deleted = $request->query->get('deleted');
         $em = $this->getDoctrine()->getManager();
 
         $users = $em->getRepository('AppBundle:User')->findAll();
 
         return $this->render('user/index.html.twig', array(
-            'users' => $users
+            'users' => $users,
+            'message'=> $message,
+            'deleted'=>$deleted
         ));
     }
 
@@ -48,7 +52,7 @@ class UserController extends Controller
 
         // Comprobamos que se ha enviado el formulario
         if ($form->isSubmitted() && $form->isValid()) {
-
+            $message= "succes";
             // Codificamos la contraseña en texto plano accediendo al 'encoder' que habíamos indicado en la configuración
             $password = $this->get('security.password_encoder')
                 ->encodePassword($user, $user->getPlainPassword());
@@ -62,7 +66,9 @@ class UserController extends Controller
             $em->flush();
 
             // Redigirimos a la pantalla de login para que acceda el nuevo usuario
-            return $this->redirectToRoute('login');
+            return $this->redirectToRoute('login',[
+                'message'=>$message
+            ]);
         }
 
         return $this->render(
@@ -101,8 +107,11 @@ class UserController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('user_index');
+            $message = "success";
+            return $this->redirectToRoute('user_index', array(
+                'id'=>$user->getId(),
+                'message'=>$message
+            ));
         }
 
         return $this->render('user/edit.html.twig', array(
@@ -129,7 +138,9 @@ class UserController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('user_index');
+        return $this->redirectToRoute('user_index',[
+            "deleted" => "deleted"
+        ]);
     }
 
     /**

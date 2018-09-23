@@ -6,6 +6,7 @@
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
         <input class="btn btn-dark" type="submit" value="Edit" />
+        <input class="btn btn-dark" type="hidden" value="error" name="error"/>
     {{ form_end(edit_form) }}
 
     <ul class="list-unstyled">
@@ -18,4 +19,7 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+    {% if message is defined %}
+        <span class="alert-info">{{ message }}</span>
+    {% endif %}
 {% endblock %}

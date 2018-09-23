@@ -23,11 +23,12 @@ class SecurityController extends Controller
 
         // Recupera el último nombre de usuario introducido
         $lastUsername = $authenticationUtils->getLastUsername();
-
+        $message=$request->query->get('message');
         // Renderiza la plantilla, enviándole, si existen, el último error y nombre de usuario
         return $this->render('security/login.html.twig', array(
             'last_username' => $lastUsername,
             'error'         => $error,
+            'message'       => $message
         ));
     }
 

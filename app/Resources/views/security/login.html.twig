@@ -25,4 +25,7 @@
 
     {# Enlace al registro #}
     <p><a class="btn btn-info" href="{{ path('user_new') }}">Registro</a></p>
+    {% if message is defined %}
+        <div class="alert-success">{{ message }}</div>
+    {% endif %}
 {% endblock %}

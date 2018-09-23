@@ -9,6 +9,7 @@
                 <th scope="col">Id</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
+                <th scope="col">LastName</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -18,6 +19,7 @@
                 <th scope="row"><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></th>
                 <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
+                <td>{{ user.lastUsername }}</td>
                 <td>
                     <ul class="list-unstyled">
                         <li>
@@ -38,4 +40,10 @@
             <a class="btn btn-danger" href="{{ path('user_new') }}">Create a new user</a>
         </li>
     </ul>
+    {% if message is defined %}
+        <div class="alert-success">{{ message }}</div>
+    {% endif %}
+    {% if deleted is defined %}
+        <div class="alert-warning">{{ deleted }}</div>
+    {% endif %}
 {% endblock %}
