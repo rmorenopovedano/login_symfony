@@ -2,7 +2,7 @@
 
 {% block body %}
     <div id="wrapper">
-    {% for r in raul %}
+   {% for r in raul %}
        Tu admin es mister: {{ r }}
         {% endfor %}
         <div id="container">
@@ -10,6 +10,7 @@
                 <h1><span>Welcome to</span> Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}</h1>
             </div>
             <a class="btn btn-danger align-content-sm-center" href="{{ path('logout') }}">Logout</a>
+            <a class="btn btn-dark align-content-sm-center" href="{{ path('user_index') }}">Usuarios</a>
             <h2>Bienvenido {{ name }}</h2>
             </div>
 

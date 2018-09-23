@@ -3,30 +3,28 @@
 {% block body %}
     <h1>Users list</h1>
 
-    <table>
-        <thead>
+    <table class="table">
+        <thead class="thead-dark">
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Actions</th>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
-                <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+                <th scope="row"><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></th>
                 <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.password }}</td>
                 <td>
-                    <ul>
+                    <ul class="list-unstyled">
                         <li>
-                            <a href="{{ path('user_show', { 'id': user.id }) }}">show</a>
+                            <a class="btn btn-outline-success float-left" href="{{ path('user_show', { 'id': user.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('user_edit', { 'id': user.id }) }}">edit</a>
+                            <a class="btn btn-outline-danger float-left" href="{{ path('user_edit', { 'id': user.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -35,9 +33,9 @@
         </tbody>
     </table>
 
-    <ul>
+    <ul class="list-unstyled">
         <li>
-            <a href="{{ path('user_new') }}">Create a new user</a>
+            <a class="btn btn-danger" href="{{ path('user_new') }}">Create a new user</a>
         </li>
     </ul>
 {% endblock %}

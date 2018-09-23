@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Knp\Bundle\SnappyBundle\Snappy\Response\JpegResponse;
 
 class DefaultController extends Controller
 {
